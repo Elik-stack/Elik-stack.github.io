@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Projects | Elijah Kimani</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>My GitHub Projects</h1>
+      <p>Automatically fetched from <a href="https://github.com/Elik-stack" target="_blank">Elik-stack</a></p>
+      <a href="index.html" class="btn">← Back to Portfolio</a>
+    </div>
+  </header>
+
+  <section id="repo-list">
+    <div class="container">
+      <h2>GitHub Repository Gallery</h2>
+      <div id="repos" class="project-grid"></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>© 2025 Elijah Kimani | Powered by GitHub API</p>
+    </div>
+  </footer>
+
+  <script>
+    const username = "Elik-stack";
+    const repoContainer = document.getElementById("repos");
+
+    async function fetchRepos() {
+      try {
+        const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated`);
+        const repos = await response.json();
+
+        repos.forEach(repo => {
+          const repoCard = document.createElement("div");
+          repoCard.classList.add("project-card");
+
+          repoCard.innerHTML = `
+            <h3>${repo.name}</h3>
+            <p>${repo.description || "No description available."}</p>
+            <p><strong>Language:</strong> ${repo.language || "N/A"}</p>
+            <a href="${repo.html_url}" target="_blank" class="btn">View on GitHub</a>
+          `;
+
+          repoContainer.appendChild(repoCard);
+        });
+      } catch (error) {
+        repoContainer.innerHTML = `<p>⚠️ Could not fetch repositories. Please try again later.</p>`;
+      }
+    }
+
+    fetchRepos();
+  </script>
+</body>
+</html>

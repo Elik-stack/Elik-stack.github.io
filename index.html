@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elijah Kimani | Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* === GLOBAL STYLES === */
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #f5f7fa;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    header {
+      background: #007acc;
+      color: #fff;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    nav {
+      margin-top: 15px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffea00;
+    }
+
+    /* === PROFILE SECTION === */
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #fff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      display: block;
+      margin: 0 auto 15px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .profile-pic:hover {
+      transform: scale(1.05);
+    }
+
+    h1 {
+      font-size: 2.2em;
+      margin-bottom: 10px;
+    }
+
+    p.title {
+      font-size: 1.1em;
+      margin-bottom: 10px;
+    }
+
+    /* === SOCIAL LINKS === */
+    .social-links {
+      margin-top: 15px;
+    }
+
+    .social-links a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: 600;
+      transition: opacity 0.3s;
+    }
+
+    .social-links a:hover {
+      opacity: 0.8;
+    }
+
+    /* === ABOUT SECTION === */
+    section {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    section h2 {
+      color: #007acc;
+    }
+
+    /* === LIGHTBOX === */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.8);
+    }
+
+    .lightbox-content {
+      margin: auto;
+      display: block;
+      max-width: 80%;
+      max-height: 80%;
+      margin-top: 5%;
+      border-radius: 10px;
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* === FOOTER === */
+    footer {
+      background: #222;
+      color: #ccc;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+    }
+
+    footer a {
+      color: #ffea00;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <!-- Profile Picture with Lightbox -->
+    <img id="profilePic" src="images/elijah.jpg" alt="Elijah Kimani" class="profile-pic">
+
+    <h1>Elijah Kimani</h1>
+    <p class="title">Computer Science Graduate | Full Stack Developer</p>
+    <p>📧 <a href="mailto:elijahkariukikimani@gmail.com" style="color:#ffea00;">elijahkariukikimani@gmail.com</a></p>
+    <p>📞 <a href="tel:+254704091412" style="color:#ffea00;">0704 091 412</a></p>
+
+    <div class="social-links">
+      <a href="https://github.com/Elik-stack" target="_blank">🐙 GitHub</a> |
+      <a href="projects.html">💻 Projects</a> |
+      <a href="about.html">👤 About</a> |
+      <a href="contact.html">📩 Contact</a>
+    </div>
+  </header>
+
+  <section>
+    <h2>Welcome to My Portfolio</h2>
+    <p>
+      I'm a passionate Computer Science graduate with skills in web development, machine learning,
+      and software design. I enjoy building systems that solve real-world problems efficiently and beautifully.
+    </p>
+    <p>
+      Explore my projects, learn more about me, and feel free to get in touch!
+    </p>
+  </section>
+
+  <!-- LIGHTBOX DIV -->
+  <div id="lightbox" class="lightbox">
+    <span class="close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+  </div>
+
+  <footer>
+    © 2025 Elijah Kimani — <a href="https://github.com/Elik-stack" target="_blank">View on GitHub</a>
+  </footer>
+
+  <!-- LIGHTBOX SCRIPT -->
+  <script>
+    const img = document.getElementById('profilePic');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.querySelector('.close');
+
+    img.onclick = () => {
+      lightbox.style.display = 'block';
+      lightboxImg.src = img.src;
+    }
+
+    closeBtn.onclick = () => {
+      lightbox.style.display = 'none';
+    }
+
+    lightbox.onclick = (e) => {
+      if (e.target === lightbox) lightbox.style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>
